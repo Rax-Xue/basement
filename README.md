@@ -1,1 +1,1 @@
-[plots with python](ploter)
+[plots with python](ploter/README.md)

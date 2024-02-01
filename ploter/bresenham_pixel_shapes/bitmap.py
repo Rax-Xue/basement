@@ -98,18 +98,29 @@ class Bitmap():
 				if bit != self.background:
 					self.map[i+bias[0]][j+bias[1]] = bit
 
-
-
-	def findline(self,line:int,color:Colour=black)->list():
+	def findrow(self,row:int,color:Colour=black)->list():
 		'''
-		find color item in given line
-		line: 0 to height-1
-		return: list containing index of given color
+		find color item in given row
+		row: 0 to height-1
+		return: list containing column index of given color at given row
 		'''
-		assert line >= 0 and line < self.height
+		assert row >= 0 and row < self.height
 		res = list()
-		for index, bit in enumerate(self.map[line]):
+		for index, bit in enumerate(self.map[row]):
 			if bit == color:
 				res.append(index)
 		
+		return res
+	
+	def findcol(self,col:int,color:Colour=black)->list():
+		'''
+		return: list containing row index of given color at given column
+		'''
+		assert col >= 0 and col < self.width
+		res = list()
+		for index in range(self.height):
+			bit = self.map[index][col]
+			if bit == color:
+				res.append(index)
+
 		return res

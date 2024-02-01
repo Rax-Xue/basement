@@ -63,19 +63,19 @@ class Bresenhams_circle():
 
         layer = Bitmap(self.width, self.height,self.background)
 
-        # fill the gaps
-        for line in range(center[1]-radius,center[1]+radius):
-            ocps = oc.findline(line,color)
-            icps = ic.findline(line,color)
+        # fill the gaps horizontally
+        for row in range(center[1]-radius,center[1]+radius):
+            ocps = oc.findrow(row,color)
+            icps = ic.findrow(row,color)
 
             if len(icps) == 0:
                 for index in range(ocps[0],ocps[-1]):
-                    layer.set(index,line,color)
+                    layer.set(index,row,color)
             else:
                 for index in range(ocps[0],icps[0]):
-                    layer.set(index,line,color)
+                    layer.set(index,row,color)
                 for index in range(icps[-1],ocps[-1]):
-                    layer.set(index,line,color)
+                    layer.set(index,row,color)
             
         self.layers.append(layer)
 
@@ -87,7 +87,6 @@ class Bresenhams_circle():
         sa_rad = math.radians(start_angle)
         ea_rad = math.radians(end_angle)
 
-        
         pass
 
     def plot_to(self,bitmap:Bitmap):
